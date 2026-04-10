@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Cinematic Reels by ShokherSrity Wedding Photography">
+    <title>Reels | ShokherSrity</title>
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="attached_assets/logo.webp" type="image/webp">
+</head>
+<body class="reels-body">
+    
+    <!-- Minimal Header -->
+    <div class="reels-header">
+        <a href="index.html" class="back-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Back</span>
+        </a>
+        <div class="reels-brand">ShokherSrity</div>
+    </div>
+
+    <!-- Reels Feed Container -->
+    <div class="reels-feed" id="reels-feed">
+        <!-- Reel 1 -->
+        <div class="reel-item">
+            <video class="reel-video" src="attached_assets/video/06 Reels.mp4" loop playsinline preload="metadata"></video>
+            <div class="reel-overlay">
+                <div class="play-indicator">
+                    <svg viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+            </div>
+            <div class="reel-info">
+                <h3>Cinematic Wedding</h3>
+                <p>Capturing the golden moments of love.</p>
+            </div>
+        </div>
+
+        <!-- Reel 2 -->
+        <div class="reel-item">
+            <video class="reel-video" src="attached_assets/video/Reels.mp4" loop playsinline preload="metadata"></video>
+            <div class="reel-overlay">
+                <div class="play-indicator">
+                    <svg viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+            </div>
+            <div class="reel-info">
+                <h3>The Grand Reception</h3>
+                <p>Elegance, artistry, and passion.</p>
+            </div>
+        </div>
+
+        <!-- Reel 3 -->
+        <div class="reel-item">
+            <video class="reel-video" src="attached_assets/video/reels44.mp4" loop playsinline preload="metadata"></video>
+            <div class="reel-overlay">
+                <div class="play-indicator">
+                    <svg viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+            </div>
+            <div class="reel-info">
+                <h3>Beautiful Details</h3>
+                <p>Telling your love story frame by frame.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reels = document.querySelectorAll('.reel-item');
+            
+            // Observer to play/pause videos based on visibility
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target.querySelector('.reel-video');
+                    const overlay = entry.target.querySelector('.reel-overlay');
+                    
+                    if (entry.isIntersecting) {
+                        video.play().then(() => {
+                            overlay.classList.add('playing');
+                        }).catch(e => {
+                            // Autoplay blocked (requires interaction)
+                            overlay.classList.remove('playing');
+                        });
+                    } else {
+                        video.pause();
+                        video.currentTime = 0; // reset
+                        overlay.classList.remove('playing');
+                    }
+                });
+            }, {
+                threshold: 0.6 // Trigger when 60% of video is visible
+            });
+
+            reels.forEach(reel => {
+                const video = reel.querySelector('.reel-video');
+                const overlay = reel.querySelector('.reel-overlay');
+
+                observer.observe(reel);
+
+                // Toggle play/pause on click anywhere on the item
+                reel.addEventListener('click', () => {
+                    if (video.paused) {
+                        video.play();
+                        overlay.classList.add('playing');
+                    } else {
+                        video.pause();
+                        overlay.classList.remove('playing');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
