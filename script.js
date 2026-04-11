@@ -4,54 +4,6 @@
  */
 
 // ============================================
-// PHOTO CATALOG - All photos from categorized folders (sorted numerically)
-// ============================================
-
-// Utility: extract number from filename and sort
-function numericSortFiles(files) {
-    return [...files].sort((a, b) => {
-        const numA = parseInt(a.replace(/\D/g, ''), 10) || 0;
-        const numB = parseInt(b.replace(/\D/g, ''), 10) || 0;
-        if (numA !== numB) return numA - numB;
-        // If same number, shorter name first (e.g. "1.webp" before "001.webp")
-        return a.length - b.length;
-    });
-}
-
-const PHOTO_CATALOG = {
-    wedding: {
-        label: 'Wedding',
-        folder: 'attached_assets/Wedding Photoshooot',
-        files: numericSortFiles(['1.webp','02.webp','03.webp','04.webp','4.webp','6.webp','7.webp','07.webp','8.webp','08.webp','9.webp','11.webp','13.webp','14.webp','001.webp','014.webp','15.webp','16.webp','17.webp','18.webp','19.webp','20.webp','020.webp','21.webp','021.webp','22.webp','022.webp','26.webp','27.webp','28.webp','29.webp','31.webp'])
-    },
-    bride: {
-        label: 'Bride',
-        folder: 'attached_assets/Bride Photoshoot',
-        files: numericSortFiles(['01.webp','02.webp','03.webp','04.webp','05.webp','06.webp','07.webp','0003.webp','0004.webp','0010.webp','003.webp','004.webp','007.webp','010.webp','012.webp','013.webp','014.webp','015.webp','016.webp','019.webp','3.webp','4.webp','5.webp','6.webp','7.webp','9.webp','10.webp','11.webp','12.webp','13.webp','14.webp','15.webp','16.webp','17.webp','18.webp','19.webp','23.webp','27.webp','34.webp','36.webp','38.webp','40.webp','41.webp'])
-    },
-    reception: {
-        label: 'Reception',
-        folder: 'attached_assets/Reception',
-        files: numericSortFiles(['0003.webp','003.webp','03.webp','04.webp','08.webp','011.webp','012.webp','017.webp','1.webp','2.webp','3.webp','4.webp','5.webp','7.webp','8.webp','9.webp','11.webp','12.webp','14.webp','15.webp','16.webp','17.webp','19.webp'])
-    },
-    engagement: {
-        label: 'Engagement',
-        folder: 'attached_assets/Engegment Photoshoot',
-        files: numericSortFiles(['01.webp','04.webp','05.webp','07.webp','1.webp','2.webp','3.webp','4.webp','5.webp','6.webp','7.webp','8.webp','9.webp','12.webp','13.webp','16.webp'])
-    },
-    babyshower: {
-        label: 'Baby Shower',
-        folder: 'attached_assets/Baby Shower',
-        files: numericSortFiles(['0003.webp','003.webp','01.webp','010.webp','011.webp','02.webp','03.webp','04.webp','10.webp','11.webp','13.webp','16.webp','19.webp','2.webp','20.webp','3.webp','5.webp','7.webp','8.webp','9.webp'])
-    },
-    baby: {
-        label: 'Baby Photoshoot',
-        folder: 'attached_assets/Baby Photoshoot',
-        files: numericSortFiles(['015.webp','016.webp','017.webp','03.webp','04.webp','05.webp','09.webp','1.webp','11.webp','13.webp','14.webp','15.webp','16.webp','17.webp','19.webp','2.webp','3.webp','4.webp','5.webp','7.webp','8.webp','9.webp'])
-    }
-};
-
-// ============================================
 // DYNAMIC COPYRIGHT YEAR
 // ============================================
 function updateCopyrightYear() {
@@ -179,103 +131,6 @@ function shuffleArray(arr) {
         [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
-}
-
-// ============================================
-// BUILD GALLERY GRID (gallery.html)
-// ============================================
-function buildGalleryGrid() {
-    const grid = document.getElementById('gallery-grid');
-    if (!grid) return;
-
-    // Build all photo items from all categories
-    let allItems = [];
-    Object.keys(PHOTO_CATALOG).forEach(catKey => {
-        const cat = PHOTO_CATALOG[catKey];
-        cat.files.forEach(file => {
-            allItems.push({
-                src: cat.folder + '/' + file,
-                category: catKey,
-                label: cat.label,
-                title: cat.label
-            });
-        });
-    });
-
-    // Shuffle for "all" view
-    allItems = shuffleArray(allItems);
-
-    // Create masonry items with lazy placeholders
-    allItems.forEach((item, idx) => {
-        const div = document.createElement('div');
-        div.className = 'masonry-item';
-        div.dataset.category = item.category;
-        div.innerHTML = `
-            <div class="img-placeholder"></div>
-            <img data-src="${item.src}" alt="${item.label} Photography" decoding="async">
-            <div class="masonry-overlay">
-                <span class="masonry-category">${item.label}</span>
-                <h4 class="masonry-title">${item.title}</h4>
-            </div>
-            <div class="masonry-zoom">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    <line x1="11" y1="8" x2="11" y2="14"></line>
-                    <line x1="8" y1="11" x2="14" y2="11"></line>
-                </svg>
-            </div>
-        `;
-        grid.appendChild(div);
-    });
-
-    // Initialize progressive lazy loading
-    initProgressiveLazyLoad();
-}
-
-// ============================================
-// BUILD HOMEPAGE FEATURED SECTION
-// ============================================
-function buildHomepageFeatured() {
-    const grid = document.getElementById('homepage-featured-grid');
-    if (!grid) return;
-
-    // Pick 2 photos from each category
-    const picks = [];
-    Object.keys(PHOTO_CATALOG).forEach(catKey => {
-        const cat = PHOTO_CATALOG[catKey];
-        const shuffled = shuffleArray(cat.files);
-        const count = Math.min(2, shuffled.length);
-        for (let i = 0; i < count; i++) {
-            picks.push({
-                src: cat.folder + '/' + shuffled[i],
-                category: catKey,
-                label: cat.label
-            });
-        }
-    });
-
-    // Shuffle the picks
-    const finalPicks = shuffleArray(picks);
-
-    finalPicks.forEach((item, idx) => {
-        const div = document.createElement('div');
-        div.className = 'featured-item';
-        div.dataset.category = item.category;
-        div.setAttribute('data-aos', 'fade-up');
-        if (idx > 0) div.setAttribute('data-aos-delay', String(idx * 100));
-        div.innerHTML = `
-            <div class="img-placeholder"></div>
-            <img data-src="${item.src}" alt="${item.label} Photography" decoding="async">
-            <div class="featured-overlay">
-                <span class="featured-category">${item.label}</span>
-                <h4 class="featured-title">${item.label}</h4>
-            </div>
-        `;
-        grid.appendChild(div);
-    });
-
-    initProgressiveLazyLoad();
 }
 
 // ============================================
@@ -457,73 +312,147 @@ function initSmoothScroll() {
     });
 }
 
-// ============================================
-// PROGRESSIVE LAZY LOADING WITH BLUR-UP
-// High-performance image loader for 150+ images
-// ============================================
-let _lazyObserver = null;
 
-function initProgressiveLazyLoad() {
-    const lazyImages = document.querySelectorAll('img[data-src]:not(.lazy-loaded)');
+// ============================================
+// ZERO-CLS GALLERY BUILDER (JSON fetched)
+// ============================================
+let globalGalleryData = [];
+
+function initializeGalleries() {
+    try {
+        if (typeof IMAGE_CATALOG !== 'undefined') {
+            globalGalleryData = shuffleArray(IMAGE_CATALOG);
+        } else {
+            console.error("IMAGE_CATALOG is missing!");
+            return;
+        }
+
+        // Native browser lazy loading utilized.
+        if (typeof AOS !== 'undefined') AOS.refresh();
+    } catch (error) {
+        console.error("Error loading gallery data:", error);
+    }
+}
+
+function buildGalleryGrid() {
+    const grid = document.getElementById('gallery-grid');
+    if (!grid) return;
+
+    const fragment = document.createDocumentFragment();
+
+    globalGalleryData.forEach((item) => {
+        const div = document.createElement('div');
+        div.className = 'masonry-item';
+        div.dataset.category = item.category;
+        
+        div.innerHTML = `
+            <div class="stretchy-frame" style="aspect-ratio: ${item.width} / ${item.height};">
+                <img src="${item.src}" loading="lazy" class="loaded decode-loaded" alt="${item.label} Photography">
+            </div>
+            <div class="masonry-overlay">
+                <span class="masonry-category">${item.label}</span>
+                <h4 class="masonry-title">${item.label}</h4>
+            </div>
+            <div class="masonry-zoom">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+            </div>
+        `;
+        fragment.appendChild(div);
+    });
+
+    grid.appendChild(fragment);
+}
+
+function buildHomepageFeatured() {
+    const grid = document.getElementById('homepage-featured-grid');
+    if (!grid) return;
+
+    const picks = [];
+    const categoryMap = {};
+    
+    globalGalleryData.forEach(item => {
+        if (!categoryMap[item.category]) categoryMap[item.category] = [];
+        if (categoryMap[item.category].length < 2) {
+            categoryMap[item.category].push(item);
+            picks.push(item);
+        }
+    });
+
+    const finalPicks = shuffleArray(picks);
+    const fragment = document.createDocumentFragment();
+
+    finalPicks.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'featured-item';
+        div.dataset.category = item.category;
+        div.setAttribute('data-aos', 'fade-up');
+        if (idx > 0) div.setAttribute('data-aos-delay', String(Math.min(idx * 100, 400)));
+        
+        div.innerHTML = `
+            <div class="stretchy-frame" style="height: 100%;">
+                <img src="${item.src}" loading="lazy" class="loaded decode-loaded" alt="${item.label} Photography">
+            </div>
+            <div class="featured-overlay">
+                <span class="featured-category">${item.label}</span>
+                <h4 class="featured-title">${item.label}</h4>
+            </div>
+        `;
+        fragment.appendChild(div);
+    });
+
+    grid.appendChild(fragment);
+}
+
+// ============================================
+// INVISIBLE SCOUT & BACKROOM PREP (Lazy decode)
+// ============================================
+let decodeObserver = null;
+
+function initDecodeLazyLoad() {
+    const lazyImages = document.querySelectorAll('img[data-src]:not(.decode-loaded)');
     if (lazyImages.length === 0) return;
 
-    // Use IntersectionObserver for optimal performance
-    if (!_lazyObserver) {
-        _lazyObserver = new IntersectionObserver((entries) => {
+    if (!decodeObserver) {
+        decodeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const img = entry.target;
-                    loadImage(img);
-                    _lazyObserver.unobserve(img);
+                    const imgNode = entry.target;
+                    decodeAndInjectImage(imgNode);
+                    decodeObserver.unobserve(imgNode);
                 }
             });
         }, {
-            rootMargin: '300px 0px', // Start loading 300px before entering viewport
+            rootMargin: '500px 0px',
             threshold: 0.01
         });
     }
 
-    lazyImages.forEach(img => _lazyObserver.observe(img));
+    lazyImages.forEach(img => decodeObserver.observe(img));
 }
 
-function loadImage(img) {
-    const src = img.dataset.src;
+function decodeAndInjectImage(imgNode) {
+    const src = imgNode.dataset.src;
     if (!src) return;
 
-    const tempImg = new Image();
-    tempImg.decoding = 'async';
+    const offscreenImg = new Image();
+    offscreenImg.src = src;
 
-    tempImg.onload = () => {
-        img.src = src;
-        img.classList.add('loaded');
-        img.classList.add('lazy-loaded');
-        // Hide placeholder
-        const placeholder = img.parentElement.querySelector('.img-placeholder');
-        if (placeholder) placeholder.classList.add('hidden');
-    };
-
-    tempImg.onerror = () => {
-        // Retry once after 1s
-        setTimeout(() => {
-            const retry = new Image();
-            retry.onload = () => {
-                img.src = src;
-                img.classList.add('loaded');
-                img.classList.add('lazy-loaded');
-                const placeholder = img.parentElement.querySelector('.img-placeholder');
-                if (placeholder) placeholder.classList.add('hidden');
-            };
-            retry.onerror = () => {
-                img.classList.add('error');
-                img.classList.add('loaded');
-            };
-            retry.src = src;
-        }, 1000);
-    };
-
-    tempImg.src = src;
+    offscreenImg.decode().then(() => {
+        imgNode.src = src;
+        requestAnimationFrame(() => {
+            imgNode.classList.add('is-loaded');
+            imgNode.classList.add('decode-loaded');
+        });
+    }).catch(err => {
+        imgNode.src = src;
+        imgNode.onload = () => imgNode.classList.add('is-loaded');
+    });
 }
-
 // Legacy wrapper for images that already have src set (about section, etc.)
 function initImageLoading() {
     const images = document.querySelectorAll('img[src]:not([data-src]):not(.loaded):not(.lightbox-img)');
@@ -655,6 +584,8 @@ function updateCalcTotal() {
 // INITIALIZE ALL
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
+    initializeGalleries();
+    initImageLoading();
     updateCopyrightYear();
     initHeaderScroll();
     initMobileMenu();
@@ -673,8 +604,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Gallery
     initGalleryFilter();
     initLightbox();
-    initImageLoading();
-
     initAOS();
     initWhatsAppButton();
     initInquiryCards();
@@ -693,3 +622,19 @@ if ('serviceWorker' in navigator) {
         registrations.forEach(registration => { registration.unregister(); });
     });
 }
+
+
+// ============================================
+// LEGACY IMAGE LOADER (For static non-lazy images)
+// ============================================
+function initImageLoading() {
+    const images = document.querySelectorAll('img[src]:not([data-src]):not(.loaded)');
+    images.forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => img.classList.add('loaded'));
+        }
+    });
+}
+
