@@ -3272,3 +3272,11 @@ img.loaded { opacity: 1 !important; }
 
 .stretchy-frame img { opacity: 1 !important; }
 .about-image img { opacity: 1 !important; }
+
+
+/* USER OVERRIDES - SOCIAL FOOTER BIG B&W */
+.footer-social a { width: 50px !important; height: 50px !important; background: #000 !important; border: 2px solid #fff !important; color: #fff !important; }
+.footer-social a svg { width: 24px !important; height: 24px !important; stroke: #fff !important; fill: none !important; }
+.footer-social a:hover { background: #fff !important; border-color: #fff !important; color: #000 !important; }
+.footer-social a:hover svg { stroke: #000 !important; fill: none !important; }
+
