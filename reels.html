@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Cinematic Reels by ShokherSrity Wedding Photography">
-    <title>Reels | ShokherSrity</title>
+    <meta name="description" content="Watch cinematic wedding reels by ShokherSrity. Experience the magic of your special day through our stunning videography.">
+    <title>Reels | ShokherSrity Wedding Photography</title>
     
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,108 +21,270 @@
 </head>
 <body class="reels-body">
     
-    <!-- Minimal Header -->
-    <div class="reels-header">
-        <a href="index.html" class="back-btn">
+    <!-- Top Bar -->
+    <div class="reels-topbar">
+        <a href="index.html" class="reels-back" aria-label="Go back">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
+                <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
-            <span>Back</span>
         </a>
-        <div class="reels-brand">ShokherSrity</div>
+        <div class="reels-topbar-title">
+            <span class="reels-topbar-label">Reels</span>
+        </div>
+        <a href="index.html" class="reels-logo-link">
+            <span class="reels-logo-text">ShokherSrity</span>
+        </a>
+    </div>
+
+    <!-- Reel Counter / Progress -->
+    <div class="reel-progress-bar" id="reel-progress">
+        <div class="reel-progress-dot active" data-index="0"></div>
+        <div class="reel-progress-dot" data-index="1"></div>
+        <div class="reel-progress-dot" data-index="2"></div>
     </div>
 
     <!-- Reels Feed Container -->
     <div class="reels-feed" id="reels-feed">
+
         <!-- Reel 1 -->
-        <div class="reel-item">
-            <video class="reel-video" src="attached_assets/video/06 Reels.mp4" loop playsinline preload="metadata"></video>
-            <div class="reel-overlay">
-                <div class="play-indicator">
+        <div class="reel-item" data-index="0">
+            <video class="reel-video" src="attached_assets/video/06 Reels.mp4" loop playsinline preload="metadata" poster=""></video>
+            
+            <!-- Tap zones -->
+            <div class="reel-tap-zone reel-tap-left"></div>
+            <div class="reel-tap-zone reel-tap-right"></div>
+
+            <!-- Central play/pause feedback -->
+            <div class="reel-play-feedback" id="feedback-0">
+                <div class="reel-play-icon">
                     <svg viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                 </div>
+                <div class="reel-pause-icon">
+                    <svg viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                </div>
             </div>
+
+            <!-- Video Progress Bar -->
+            <div class="reel-video-progress">
+                <div class="reel-video-progress-fill" id="progress-0"></div>
+            </div>
+
+            <!-- Info -->
             <div class="reel-info">
-                <h3>Cinematic Wedding</h3>
-                <p>Capturing the golden moments of love.</p>
+                <div class="reel-info-left">
+                    <div class="reel-author-row">
+                        <div class="reel-author-avatar">
+                            <img src="attached_assets/logo.webp" alt="ShokherSrity" width="36" height="36">
+                        </div>
+                        <span class="reel-author-name">ShokherSrity</span>
+                    </div>
+                    <h3 class="reel-title">Cinematic Wedding Reel</h3>
+                    <p class="reel-desc">An elegant dance of love captured in every frame ✨</p>
+                </div>
+                <div class="reel-info-right">
+                    <button class="reel-action-btn reel-mute-btn" data-index="0" aria-label="Toggle mute">
+                        <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                        <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+                    </button>
+                </div>
             </div>
         </div>
 
         <!-- Reel 2 -->
-        <div class="reel-item">
-            <video class="reel-video" src="attached_assets/video/Reels.mp4" loop playsinline preload="metadata"></video>
-            <div class="reel-overlay">
-                <div class="play-indicator">
+        <div class="reel-item" data-index="1">
+            <video class="reel-video" src="attached_assets/video/Reels.mp4" loop playsinline preload="metadata" poster=""></video>
+            
+            <div class="reel-tap-zone reel-tap-left"></div>
+            <div class="reel-tap-zone reel-tap-right"></div>
+
+            <div class="reel-play-feedback" id="feedback-1">
+                <div class="reel-play-icon">
                     <svg viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                 </div>
+                <div class="reel-pause-icon">
+                    <svg viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                </div>
             </div>
+
+            <div class="reel-video-progress">
+                <div class="reel-video-progress-fill" id="progress-1"></div>
+            </div>
+
             <div class="reel-info">
-                <h3>The Grand Reception</h3>
-                <p>Elegance, artistry, and passion.</p>
+                <div class="reel-info-left">
+                    <div class="reel-author-row">
+                        <div class="reel-author-avatar">
+                            <img src="attached_assets/logo.webp" alt="ShokherSrity" width="36" height="36">
+                        </div>
+                        <span class="reel-author-name">ShokherSrity</span>
+                    </div>
+                    <h3 class="reel-title">The Grand Reception</h3>
+                    <p class="reel-desc">Where elegance meets celebration 💫</p>
+                </div>
+                <div class="reel-info-right">
+                    <button class="reel-action-btn reel-mute-btn" data-index="1" aria-label="Toggle mute">
+                        <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                        <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+                    </button>
+                </div>
             </div>
         </div>
 
         <!-- Reel 3 -->
-        <div class="reel-item">
-            <video class="reel-video" src="attached_assets/video/reels44.mp4" loop playsinline preload="metadata"></video>
-            <div class="reel-overlay">
-                <div class="play-indicator">
+        <div class="reel-item" data-index="2">
+            <video class="reel-video" src="attached_assets/video/reels44.mp4" loop playsinline preload="metadata" poster=""></video>
+            
+            <div class="reel-tap-zone reel-tap-left"></div>
+            <div class="reel-tap-zone reel-tap-right"></div>
+
+            <div class="reel-play-feedback" id="feedback-2">
+                <div class="reel-play-icon">
                     <svg viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                 </div>
+                <div class="reel-pause-icon">
+                    <svg viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                </div>
             </div>
+
+            <div class="reel-video-progress">
+                <div class="reel-video-progress-fill" id="progress-2"></div>
+            </div>
+
             <div class="reel-info">
-                <h3>Beautiful Details</h3>
-                <p>Telling your love story frame by frame.</p>
+                <div class="reel-info-left">
+                    <div class="reel-author-row">
+                        <div class="reel-author-avatar">
+                            <img src="attached_assets/logo.webp" alt="ShokherSrity" width="36" height="36">
+                        </div>
+                        <span class="reel-author-name">ShokherSrity</span>
+                    </div>
+                    <h3 class="reel-title">Beautiful Details</h3>
+                    <p class="reel-desc">Telling your love story frame by frame 🎬</p>
+                </div>
+                <div class="reel-info-right">
+                    <button class="reel-action-btn reel-mute-btn" data-index="2" aria-label="Toggle mute">
+                        <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                        <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const reels = document.querySelectorAll('.reel-item');
-            
-            // Observer to play/pause videos based on visibility
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const video = entry.target.querySelector('.reel-video');
-                    const overlay = entry.target.querySelector('.reel-overlay');
-                    
-                    if (entry.isIntersecting) {
-                        video.play().then(() => {
-                            overlay.classList.add('playing');
-                        }).catch(e => {
-                            // Autoplay blocked (requires interaction)
-                            overlay.classList.remove('playing');
-                        });
-                    } else {
-                        video.pause();
-                        video.currentTime = 0; // reset
-                        overlay.classList.remove('playing');
-                    }
-                });
-            }, {
-                threshold: 0.6 // Trigger when 60% of video is visible
+    document.addEventListener('DOMContentLoaded', () => {
+        const feed = document.getElementById('reels-feed');
+        const reelItems = document.querySelectorAll('.reel-item');
+        const progressDots = document.querySelectorAll('.reel-progress-dot');
+        let isMuted = true; // Start muted for autoplay compliance
+
+        // Set all videos muted initially
+        document.querySelectorAll('.reel-video').forEach(v => { v.muted = true; });
+        // Mark mute buttons as muted visually
+        document.querySelectorAll('.reel-mute-btn').forEach(b => { b.classList.add('muted'); });
+
+        // ---- INTERSECTION OBSERVER: Auto-play/pause on scroll snap ----
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target.querySelector('.reel-video');
+                const idx = parseInt(entry.target.dataset.index);
+                const feedback = document.getElementById('feedback-' + idx);
+
+                if (entry.isIntersecting) {
+                    video.play().then(() => {
+                        feedback.classList.add('playing');
+                    }).catch(() => {
+                        feedback.classList.remove('playing');
+                    });
+                    // Update progress dots
+                    progressDots.forEach(d => d.classList.remove('active'));
+                    if (progressDots[idx]) progressDots[idx].classList.add('active');
+                } else {
+                    video.pause();
+                    video.currentTime = 0;
+                    feedback.classList.remove('playing');
+                    // Reset progress bar
+                    const prog = document.getElementById('progress-' + idx);
+                    if (prog) prog.style.width = '0%';
+                }
+            });
+        }, { threshold: 0.6 });
+
+        reelItems.forEach(reel => observer.observe(reel));
+
+        // ---- TAP TO PLAY/PAUSE ----
+        reelItems.forEach(reel => {
+            const video = reel.querySelector('.reel-video');
+            const idx = parseInt(reel.dataset.index);
+            const feedback = document.getElementById('feedback-' + idx);
+
+            reel.addEventListener('click', (e) => {
+                // Ignore clicks on action buttons
+                if (e.target.closest('.reel-action-btn')) return;
+
+                if (video.paused) {
+                    video.play();
+                    feedback.classList.add('playing');
+                    // Brief pause icon flash
+                    feedback.classList.remove('show-play');
+                } else {
+                    video.pause();
+                    feedback.classList.remove('playing');
+                    feedback.classList.add('show-play');
+                }
             });
 
-            reels.forEach(reel => {
-                const video = reel.querySelector('.reel-video');
-                const overlay = reel.querySelector('.reel-overlay');
+            // Progress bar update
+            video.addEventListener('timeupdate', () => {
+                if (video.duration) {
+                    const pct = (video.currentTime / video.duration) * 100;
+                    const prog = document.getElementById('progress-' + idx);
+                    if (prog) prog.style.width = pct + '%';
+                }
+            });
+        });
 
-                observer.observe(reel);
-
-                // Toggle play/pause on click anywhere on the item
-                reel.addEventListener('click', () => {
-                    if (video.paused) {
-                        video.play();
-                        overlay.classList.add('playing');
-                    } else {
-                        video.pause();
-                        overlay.classList.remove('playing');
-                    }
+        // ---- MUTE/UNMUTE ----
+        document.querySelectorAll('.reel-mute-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                isMuted = !isMuted;
+                document.querySelectorAll('.reel-video').forEach(v => { v.muted = isMuted; });
+                document.querySelectorAll('.reel-mute-btn').forEach(b => {
+                    b.classList.toggle('muted', isMuted);
                 });
             });
         });
+
+        // ---- PROGRESS DOT CLICK TO JUMP ----
+        progressDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const idx = parseInt(dot.dataset.index);
+                const target = reelItems[idx];
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // ---- KEYBOARD NAV ----
+        document.addEventListener('keydown', (e) => {
+            const currentIdx = [...progressDots].findIndex(d => d.classList.contains('active'));
+            if (e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                const next = reelItems[currentIdx + 1];
+                if (next) next.scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prev = reelItems[currentIdx - 1];
+                if (prev) prev.scrollIntoView({ behavior: 'smooth' });
+            } else if (e.key === 'm' || e.key === 'M') {
+                isMuted = !isMuted;
+                document.querySelectorAll('.reel-video').forEach(v => { v.muted = isMuted; });
+                document.querySelectorAll('.reel-mute-btn').forEach(b => {
+                    b.classList.toggle('muted', isMuted);
+                });
+            }
+        });
+    });
     </script>
 </body>
 </html>

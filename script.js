@@ -205,13 +205,14 @@ function buildGalleryGrid() {
     // Shuffle for "all" view
     allItems = shuffleArray(allItems);
 
-    // Create masonry items
+    // Create masonry items with lazy placeholders
     allItems.forEach((item, idx) => {
         const div = document.createElement('div');
         div.className = 'masonry-item';
         div.dataset.category = item.category;
         div.innerHTML = `
-            <img src="${item.src}" alt="${item.label} Photography" loading="lazy">
+            <div class="img-placeholder"></div>
+            <img data-src="${item.src}" alt="${item.label} Photography" decoding="async">
             <div class="masonry-overlay">
                 <span class="masonry-category">${item.label}</span>
                 <h4 class="masonry-title">${item.title}</h4>
@@ -228,8 +229,8 @@ function buildGalleryGrid() {
         grid.appendChild(div);
     });
 
-    // Initialize image loading for new images
-    initImageLoading();
+    // Initialize progressive lazy loading
+    initProgressiveLazyLoad();
 }
 
 // ============================================
@@ -264,7 +265,8 @@ function buildHomepageFeatured() {
         div.setAttribute('data-aos', 'fade-up');
         if (idx > 0) div.setAttribute('data-aos-delay', String(idx * 100));
         div.innerHTML = `
-            <img src="${item.src}" alt="${item.label} Photography" loading="lazy">
+            <div class="img-placeholder"></div>
+            <img data-src="${item.src}" alt="${item.label} Photography" decoding="async">
             <div class="featured-overlay">
                 <span class="featured-category">${item.label}</span>
                 <h4 class="featured-title">${item.label}</h4>
@@ -273,7 +275,7 @@ function buildHomepageFeatured() {
         grid.appendChild(div);
     });
 
-    initImageLoading();
+    initProgressiveLazyLoad();
 }
 
 // ============================================
@@ -362,8 +364,9 @@ function initLightbox() {
         const img = currentItem.querySelector('img');
         const caption = currentItem.querySelector('.masonry-title, .featured-title');
 
-        // Force image to load by setting src directly
-        lightboxImg.src = img.src;
+        // Use data-src for lazy images, fallback to src
+        const imgSrc = img.dataset.src || img.src;
+        lightboxImg.src = imgSrc;
         lightboxImg.alt = img.alt;
         lightboxCaption.textContent = caption ? caption.textContent : '';
     }
@@ -455,39 +458,86 @@ function initSmoothScroll() {
 }
 
 // ============================================
-// IMAGE LOADING OPTIMIZATION
+// PROGRESSIVE LAZY LOADING WITH BLUR-UP
+// High-performance image loader for 150+ images
 // ============================================
+let _lazyObserver = null;
+
+function initProgressiveLazyLoad() {
+    const lazyImages = document.querySelectorAll('img[data-src]:not(.lazy-loaded)');
+    if (lazyImages.length === 0) return;
+
+    // Use IntersectionObserver for optimal performance
+    if (!_lazyObserver) {
+        _lazyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    loadImage(img);
+                    _lazyObserver.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '300px 0px', // Start loading 300px before entering viewport
+            threshold: 0.01
+        });
+    }
+
+    lazyImages.forEach(img => _lazyObserver.observe(img));
+}
+
+function loadImage(img) {
+    const src = img.dataset.src;
+    if (!src) return;
+
+    const tempImg = new Image();
+    tempImg.decoding = 'async';
+
+    tempImg.onload = () => {
+        img.src = src;
+        img.classList.add('loaded');
+        img.classList.add('lazy-loaded');
+        // Hide placeholder
+        const placeholder = img.parentElement.querySelector('.img-placeholder');
+        if (placeholder) placeholder.classList.add('hidden');
+    };
+
+    tempImg.onerror = () => {
+        // Retry once after 1s
+        setTimeout(() => {
+            const retry = new Image();
+            retry.onload = () => {
+                img.src = src;
+                img.classList.add('loaded');
+                img.classList.add('lazy-loaded');
+                const placeholder = img.parentElement.querySelector('.img-placeholder');
+                if (placeholder) placeholder.classList.add('hidden');
+            };
+            retry.onerror = () => {
+                img.classList.add('error');
+                img.classList.add('loaded');
+            };
+            retry.src = src;
+        }, 1000);
+    };
+
+    tempImg.src = src;
+}
+
+// Legacy wrapper for images that already have src set (about section, etc.)
 function initImageLoading() {
-    const images = document.querySelectorAll('img:not(.loaded):not(.lightbox-img)');
+    const images = document.querySelectorAll('img[src]:not([data-src]):not(.loaded):not(.lightbox-img)');
     images.forEach(img => {
         if (img.complete && img.naturalWidth > 0) {
             img.classList.add('loaded');
-        } else if (img.complete && img.naturalWidth === 0) {
-            retryImageLoad(img);
         } else {
             img.addEventListener('load', () => { img.classList.add('loaded'); });
-            img.addEventListener('error', () => { retryImageLoad(img); });
+            img.addEventListener('error', () => {
+                img.classList.add('error');
+                img.classList.add('loaded');
+            });
         }
     });
-}
-
-function retryImageLoad(img, attempts = 3) {
-    let count = 0;
-    const originalSrc = img.src;
-    function tryLoad() {
-        count++;
-        if (count > attempts) {
-            img.classList.add('error');
-            img.classList.add('loaded');
-            return;
-        }
-        const separator = originalSrc.includes('?') ? '&' : '?';
-        img.src = originalSrc + separator + 'retry=' + count + '&t=' + Date.now();
-    }
-    img.addEventListener('error', () => {
-        setTimeout(tryLoad, 500 * count);
-    }, { once: true });
-    tryLoad();
 }
 
 // ============================================
