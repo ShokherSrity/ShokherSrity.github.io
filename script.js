@@ -248,7 +248,7 @@ function initLightbox() {
 
     document.addEventListener('keydown', (e) => {
         if (!lightbox.classList.contains('active')) return;
-        switch(e.key) {
+        switch (e.key) {
             case 'Escape': closeLightbox(); break;
             case 'ArrowLeft': prevImage(); break;
             case 'ArrowRight': nextImage(); break;
@@ -299,7 +299,7 @@ function initResponsiveHero() {
 // ============================================
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -344,7 +344,7 @@ function buildGalleryGrid() {
         const div = document.createElement('div');
         div.className = 'masonry-item';
         div.dataset.category = item.category;
-        
+
         div.innerHTML = `
             <div class="stretchy-frame" style="aspect-ratio: ${item.width} / ${item.height};">
                 <img src="${item.src}" loading="lazy" class="loaded decode-loaded" alt="${item.label} Photography">
@@ -374,7 +374,7 @@ function buildHomepageFeatured() {
 
     const picks = [];
     const categoryMap = {};
-    
+
     globalGalleryData.forEach(item => {
         if (!categoryMap[item.category]) categoryMap[item.category] = [];
         if (categoryMap[item.category].length < 2) {
@@ -392,9 +392,9 @@ function buildHomepageFeatured() {
         div.dataset.category = item.category;
         div.setAttribute('data-aos', 'fade-up');
         if (idx > 0) div.setAttribute('data-aos-delay', String(Math.min(idx * 100, 400)));
-        
+
         div.innerHTML = `
-            <div class="stretchy-frame" style="height: 100%;">
+            <div class="stretchy-frame" style="aspect-ratio: ${item.width} / ${item.height};">
                 <img src="${item.src}" loading="lazy" class="loaded decode-loaded" alt="${item.label} Photography">
             </div>
             <div class="featured-overlay">
@@ -508,7 +508,7 @@ function initInquiryCards() {
             const type = card.dataset.inquiry || 'general';
             const phone = '8801799334656';
             let message = '';
-            switch(type) {
+            switch (type) {
                 case 'wedding': message = 'Hello! I am interested in booking your wedding photography package.'; break;
                 case 'portrait': message = 'Hello! I would like to book a portrait photography session.'; break;
                 case 'event': message = 'Hello! I am interested in event photography services.'; break;
