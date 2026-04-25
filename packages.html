@@ -26,6 +26,11 @@
 </head>
 
 <body class="page-packages">
+    <!-- Dark backdrop — sits at top of document flow so the transparent
+         navbar always has a dark surface on initial load. Scrolls away
+         with the page, so the nav stays transparent over content below. -->
+    <div class="nav-top-backdrop" aria-hidden="true"></div>
+
     <!-- Header -->
     <header>
         <nav>
@@ -104,54 +109,56 @@
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>All Photos &amp; Videos on Pen-drive</li>
                 </ul>
-                <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Silver%20package.%20Please%20share%20more%20details." target="_blank" class="package-btn" id="btn-silver">Book Now</a>
+                <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Silver%20package.%20Please%20share%20more%20details."
+                    target="_blank" class="package-btn" id="btn-silver">Book Now</a>
             </div>
 
             <!-- Golden Package (Featured) -->
             <div class="package-card-wrapper" data-aos="fade-up">
                 <div class="package-badge">Most Popular</div>
                 <div class="package-card featured">
-                <div class="package-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path
-                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
-                        </path>
-                    </svg>
-                </div>
-                <h3 class="package-name">Golden</h3>
-                <div class="package-price">৳20,000<span>/ day</span></div>
-                <p class="package-price-note">Our best-selling package</p>
-                <div class="package-divider"></div>
-                <ul class="package-features">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>2 Professional Photographers</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 Cinematographer</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>Unlimited Photo Clicks</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>150 Specially Edited Photos</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>75 Photo Prints (4R)</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 Cinematic Promo Video</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 Full Event Video</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>5 Hours Coverage</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>All Photos &amp; Videos on Pen-drive</li>
-                </ul>
-                <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Golden%20package.%20Please%20share%20more%20details." target="_blank" class="package-btn" id="btn-golden">Book Now</a>
+                    <div class="package-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="package-name">Golden</h3>
+                    <div class="package-price">৳20,000<span>/ day</span></div>
+                    <p class="package-price-note">Our best-selling package</p>
+                    <div class="package-divider"></div>
+                    <ul class="package-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>2 Professional Photographers</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 Cinematographer</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>Unlimited Photo Clicks</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>150 Specially Edited Photos</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>75 Photo Prints (4R)</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 Cinematic Promo Video</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 Full Event Video</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>5 Hours Coverage</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>All Photos &amp; Videos on Pen-drive</li>
+                    </ul>
+                    <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Golden%20package.%20Please%20share%20more%20details."
+                        target="_blank" class="package-btn" id="btn-golden">Book Now</a>
                 </div>
             </div>
 
@@ -196,7 +203,8 @@
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>All Photos &amp; Videos on Pen-drive</li>
                 </ul>
-                <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Platinum%20package.%20Please%20share%20more%20details." target="_blank" class="package-btn" id="btn-platinum">Book Now</a>
+                <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Platinum%20package.%20Please%20share%20more%20details."
+                    target="_blank" class="package-btn" id="btn-platinum">Book Now</a>
             </div>
         </div>
 
@@ -212,51 +220,53 @@
             <div class="package-card-wrapper" data-aos="fade-up">
                 <div class="package-badge">Best Value</div>
                 <div class="package-card liquid-glass">
-                <div class="package-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <polygon
-                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                        </polygon>
-                    </svg>
-                </div>
-                <h3 class="package-name">Sapphire</h3>
-                <div class="package-price">৳30,000<span>/ day</span></div>
-                <p class="package-price-note">A premium artistic approach</p>
-                <div class="package-divider"></div>
-                <ul class="package-features">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg> 2 Top Photographers</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 Top Cinematographer</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>200 Specially Edited Photos</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 Cinematic Promo</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 Full Event Video</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>6 Hours Coverage</li>
-                    <li class="feature-highlighted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 Day Drone Coverage <span class="complementary-badge">Complementary</span></li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 Premium Photobook (80-100 Photos)</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 (12R) Photo Print without Frame</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>All Photos &amp; Videos on Pen-drive</li>
-                </ul>
-                <p class="complementary-note">* Drone coverage complementary when you book a full wedding event</p>
-                <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Sapphire%20package.%20Please%20share%20more%20details." target="_blank" class="package-btn" id="btn-sapphire">Book Now</a>
+                    <div class="package-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                            </polygon>
+                        </svg>
+                    </div>
+                    <h3 class="package-name">Sapphire</h3>
+                    <div class="package-price">৳30,000<span>/ day</span></div>
+                    <p class="package-price-note">A premium artistic approach</p>
+                    <div class="package-divider"></div>
+                    <ul class="package-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> 2 Top Photographers</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 Top Cinematographer</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>200 Specially Edited Photos</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 Cinematic Promo</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 Full Event Video</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>6 Hours Coverage</li>
+                        <li class="feature-highlighted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 Day Drone Coverage <span class="complementary-badge">Complementary</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 Premium Photobook (80-100 Photos)</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 (12R) Photo Print without Frame</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>All Photos &amp; Videos on Pen-drive</li>
+                    </ul>
+                    <p class="complementary-note">* Drone coverage complementary when you book a full wedding event</p>
+                    <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Sapphire%20package.%20Please%20share%20more%20details."
+                        target="_blank" class="package-btn" id="btn-sapphire">Book Now</a>
                 </div>
             </div>
 
@@ -292,7 +302,8 @@
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>6 Hours Coverage</li>
-                    <li class="feature-highlighted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <li class="feature-highlighted"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>1 Day Drone Coverage <span class="complementary-badge">Complementary</span></li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -306,7 +317,8 @@
                         </svg>All Photos &amp; Videos on Pen-drive</li>
                 </ul>
                 <p class="complementary-note">* Drone coverage complementary when you book a full wedding event</p>
-                <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Emerald%20package.%20Please%20share%20more%20details." target="_blank" class="package-btn" id="btn-emerald">Book Now</a>
+                <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Emerald%20package.%20Please%20share%20more%20details."
+                    target="_blank" class="package-btn" id="btn-emerald">Book Now</a>
             </div>
         </div>
 
@@ -322,67 +334,72 @@
             <div class="package-card-wrapper" data-aos="fade-up">
                 <div class="package-badge">VIP Exclusive</div>
                 <div class="package-card liquid-glass exclusive">
-                <div class="package-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <path d="M16 10a4 4 0 0 1-8 0"></path>
-                    </svg>
-                </div>
-                <h3 class="package-name" style="color: var(--color-white);">Diamond</h3>
-                <div class="package-price">৳65,000<span style="color: rgba(255,255,255,0.5);">/ day</span></div>
-                <p class="package-price-note" style="color: rgba(255,255,255,0.5);">Impeccable, timeless storytelling</p>
-                <div class="package-divider"
-                    style="background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);"></div>
-                <ul class="package-features" style="color: rgba(255,255,255,0.8);">
-                    <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>3 Top Photographers</li>
-                    <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>2 Top Cinematographers</li>
-                    <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>300 Specially Edited Photos</li>
-                    <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 Cinematic Promo &amp; 1 Trendy Reel</li>
-                    <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 Full Event Video</li>
-                    <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>6 Hours Coverage</li>
-                    <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>Every Day Drone Coverage</li>
-                    <li class="feature-highlighted feature-highlighted-dark" style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>Pre/Post-Wedding Shoot <span class="complementary-badge">Complementary</span></li>
-                    <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 Imported Premium Photobook</li>
-                    <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>1 (20L) Photo Print without Frame</li>
-                    <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>All Photos &amp; Videos on Pen-drive</li>
-                </ul>
-                <p class="complementary-note" style="color: rgba(212,175,55,0.8) !important;">* Pre/Post-wedding shoot complementary when you book a full wedding event</p>
-                <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Diamond%20package.%20Please%20share%20more%20details." target="_blank" class="package-btn" id="btn-diamond"
-                    style="background: var(--gradient-gold); color: var(--color-black);">Book Now</a>
+                    <div class="package-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                    </div>
+                    <h3 class="package-name" style="color: var(--color-white);">Diamond</h3>
+                    <div class="package-price">৳65,000<span style="color: rgba(255,255,255,0.5);">/ day</span></div>
+                    <p class="package-price-note" style="color: rgba(255,255,255,0.5);">Impeccable, timeless
+                        storytelling</p>
+                    <div class="package-divider"
+                        style="background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);">
+                    </div>
+                    <ul class="package-features" style="color: rgba(255,255,255,0.8);">
+                        <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>3 Top Photographers</li>
+                        <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>2 Top Cinematographers</li>
+                        <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>300 Specially Edited Photos</li>
+                        <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 Cinematic Promo &amp; 1 Trendy Reel</li>
+                        <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 Full Event Video</li>
+                        <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>6 Hours Coverage</li>
+                        <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>Every Day Drone Coverage</li>
+                        <li class="feature-highlighted feature-highlighted-dark"
+                            style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>Pre/Post-Wedding Shoot <span class="complementary-badge">Complementary</span></li>
+                        <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 Imported Premium Photobook</li>
+                        <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>1 (20L) Photo Print without Frame</li>
+                        <li style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>All Photos &amp; Videos on Pen-drive</li>
+                    </ul>
+                    <p class="complementary-note" style="color: rgba(212,175,55,0.8) !important;">* Pre/Post-wedding
+                        shoot complementary when you book a full wedding event</p>
+                    <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Diamond%20package.%20Please%20share%20more%20details."
+                        target="_blank" class="package-btn" id="btn-diamond"
+                        style="background: var(--gradient-gold); color: var(--color-black);">Book Now</a>
                 </div>
             </div>
 
@@ -429,7 +446,8 @@
                             stroke="currentColor" stroke-width="2">
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>Every Day Drone Coverage</li>
-                    <li class="feature-highlighted feature-highlighted-dark" style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
+                    <li class="feature-highlighted feature-highlighted-dark"
+                        style="border-bottom-color: rgba(255,255,255,0.06);"><svg viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>Pre/Post-Wedding Shoot <span class="complementary-badge">Complementary</span></li>
@@ -446,8 +464,10 @@
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>All Photos &amp; Videos on Pen-drive</li>
                 </ul>
-                <p class="complementary-note" style="color: rgba(212,175,55,0.8) !important;">* Pre/Post-wedding shoot complementary when you book a full wedding event</p>
-                <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Signature%20package.%20Please%20share%20more%20details." target="_blank" class="package-btn" id="btn-signature"
+                <p class="complementary-note" style="color: rgba(212,175,55,0.8) !important;">* Pre/Post-wedding shoot
+                    complementary when you book a full wedding event</p>
+                <a href="https://wa.me/8801799334656?text=Hello!%20I%20want%20to%20inquire%20about%20the%20Signature%20package.%20Please%20share%20more%20details."
+                    target="_blank" class="package-btn" id="btn-signature"
                     style="background: var(--gradient-gold); color: var(--color-black);">Book Now</a>
             </div>
         </div>
@@ -511,180 +531,195 @@
         </div>
 
         <div class="calculator-section" data-aos="fade-up">
-            <div class="calculator-card" id="package-calculator" style="filter: grayscale(100%); opacity: 0.6; cursor: not-allowed;" onclick="openComingSoonModal()">
+            <div class="calculator-card" id="package-calculator"
+                style="filter: grayscale(100%); opacity: 0.6; cursor: not-allowed;" onclick="openComingSoonModal()">
                 <div style="pointer-events: none;">
-                <div class="calculator-header">
-                    <h3>Design Your <span
-                            style="background: var(--gradient-gold-liquid); -webkit-background-clip: text; background-clip: text; color: transparent;">Dream Package</span></h3>
-                    <p>Select the services you need and see your price update instantly</p>
-                </div>
+                    <div class="calculator-header">
+                        <h3>Design Your <span
+                                style="background: var(--gradient-gold-liquid); -webkit-background-clip: text; background-clip: text; color: transparent;">Dream
+                                Package</span></h3>
+                        <p>Select the services you need and see your price update instantly</p>
+                    </div>
 
-                <div class="calc-options-grid">
-                    <!-- Photography Options -->
-                    <div class="calc-option-group">
-                        <h4>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path
-                                    d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
-                                </path>
-                                <circle cx="12" cy="13" r="4"></circle>
-                            </svg>
-                            Photography
-                        </h4>
-                        <div class="calc-option" data-price="8000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                1 Photographer
+                    <div class="calc-options-grid">
+                        <!-- Photography Options -->
+                        <div class="calc-option-group">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                                    </path>
+                                    <circle cx="12" cy="13" r="4"></circle>
+                                </svg>
+                                Photography
+                            </h4>
+                            <div class="calc-option" data-price="8000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    1 Photographer
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳8,000</span>
                             </div>
-                            <span class="calc-option-price" style="display: none;">৳8,000</span>
+                            <div class="calc-option" data-price="14000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    2 Photographers
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳14,000</span>
+                            </div>
+                            <div class="calc-option" data-price="20000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    3 Senior Photographers
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳20,000</span>
+                            </div>
                         </div>
-                        <div class="calc-option" data-price="14000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                2 Photographers
+
+                        <!-- Videography Options -->
+                        <div class="calc-option-group">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                                </svg>
+                                Videography
+                            </h4>
+                            <div class="calc-option" data-price="10000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    1 Cinematographer
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳10,000</span>
                             </div>
-                            <span class="calc-option-price" style="display: none;">৳14,000</span>
+                            <div class="calc-option" data-price="18000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    2 Cinematographers
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳18,000</span>
+                            </div>
+                            <div class="calc-option" data-price="7000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    Cinematic Promo Reel
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳7,000</span>
+                            </div>
                         </div>
-                        <div class="calc-option" data-price="20000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                3 Senior Photographers
+
+                        <!-- Extras -->
+                        <div class="calc-option-group">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                    </path>
+                                </svg>
+                                Extras &amp; Add-ons
+                            </h4>
+                            <div class="calc-option" data-price="8000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    Drone Aerial Coverage
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳8,000</span>
                             </div>
-                            <span class="calc-option-price" style="display: none;">৳20,000</span>
+                            <div class="calc-option" data-price="5000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    Premium Photo Album
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳5,000</span>
+                            </div>
+                            <div class="calc-option" data-price="3000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    LED Photo Wall
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳3,000</span>
+                            </div>
+                        </div>
+
+                        <!-- Delivery -->
+                        <div class="calc-option-group">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                                Delivery &amp; Prints
+                            </h4>
+                            <div class="calc-option" data-price="2000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    USB Pen-drive Delivery
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳2,000</span>
+                            </div>
+                            <div class="calc-option" data-price="4000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    50 Premium Prints (4R)
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳4,000</span>
+                            </div>
+                            <div class="calc-option" data-price="6000" onclick="toggleCalcOption(this)">
+                                <div class="calc-option-label">
+                                    <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg></div>
+                                    Same-Day Edit Teaser
+                                </div>
+                                <span class="calc-option-price" style="display: none;">৳6,000</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Videography Options -->
-                    <div class="calc-option-group">
-                        <h4>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                            </svg>
-                            Videography
-                        </h4>
-                        <div class="calc-option" data-price="10000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                1 Cinematographer
-                            </div>
-                            <span class="calc-option-price" style="display: none;">৳10,000</span>
+                    <!-- Total Bar -->
+                    <div class="calc-total-bar">
+                        <div class="calc-total-label" style="display: none;">
+                            Estimated Total
+                            <span>Select options above to build your package</span>
                         </div>
-                        <div class="calc-option" data-price="18000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                2 Cinematographers
-                            </div>
-                            <span class="calc-option-price" style="display: none;">৳18,000</span>
-                        </div>
-                        <div class="calc-option" data-price="7000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                Cinematic Promo Reel
-                            </div>
-                            <span class="calc-option-price" style="display: none;">৳7,000</span>
-                        </div>
+                        <div class="calc-total-price" id="calc-total" style="display: none;">৳0</div>
+                        <a href="#" onclick="event.preventDefault();" class="btn btn-primary"
+                            id="btn-custom-book">Coming Soon</a>
                     </div>
-
-                    <!-- Extras -->
-                    <div class="calc-option-group">
-                        <h4>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path
-                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                                </path>
-                            </svg>
-                            Extras &amp; Add-ons
-                        </h4>
-                        <div class="calc-option" data-price="8000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                Drone Aerial Coverage
-                            </div>
-                            <span class="calc-option-price" style="display: none;">৳8,000</span>
-                        </div>
-                        <div class="calc-option" data-price="5000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                Premium Photo Album
-                            </div>
-                            <span class="calc-option-price" style="display: none;">৳5,000</span>
-                        </div>
-                        <div class="calc-option" data-price="3000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                LED Photo Wall
-                            </div>
-                            <span class="calc-option-price" style="display: none;">৳3,000</span>
-                        </div>
-                    </div>
-
-                    <!-- Delivery -->
-                    <div class="calc-option-group">
-                        <h4>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                            </svg>
-                            Delivery &amp; Prints
-                        </h4>
-                        <div class="calc-option" data-price="2000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                USB Pen-drive Delivery
-                            </div>
-                            <span class="calc-option-price" style="display: none;">৳2,000</span>
-                        </div>
-                        <div class="calc-option" data-price="4000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                50 Premium Prints (4R)
-                            </div>
-                            <span class="calc-option-price" style="display: none;">৳4,000</span>
-                        </div>
-                        <div class="calc-option" data-price="6000" onclick="toggleCalcOption(this)">
-                            <div class="calc-option-label">
-                                <div class="calc-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg></div>
-                                Same-Day Edit Teaser
-                            </div>
-                            <span class="calc-option-price" style="display: none;">৳6,000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Total Bar -->
-                <div class="calc-total-bar">
-                    <div class="calc-total-label" style="display: none;">
-                        Estimated Total
-                        <span>Select options above to build your package</span>
-                    </div>
-                    <div class="calc-total-price" id="calc-total" style="display: none;">৳0</div>
-                    <a href="#" onclick="event.preventDefault();" class="btn btn-primary" id="btn-custom-book">Coming Soon</a>
-                </div>
                 </div>
             </div>
         </div>
@@ -757,14 +792,20 @@
                     </svg></a>
                 <a href="https://wa.me/8801799334656" target="_blank" aria-label="WhatsApp">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                     </svg>
                 </a>
-                <a href="https://www.youtube.com/@shokhersrity" target="_blank" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"></path>
-                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"></polygon>
+                <a href="https://www.youtube.com/@shokhersrity" target="_blank" aria-label="YouTube"><svg width="20"
+                        height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z">
+                        </path>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none">
+                        </polygon>
                     </svg></a>
-                <a href="https://www.tiktok.com/@shokhersrity" target="_blank" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="https://www.tiktok.com/@shokhersrity" target="_blank" aria-label="TikTok"><svg width="20"
+                        height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"></path>
                     </svg></a>
             </div>
@@ -782,18 +823,22 @@
             </button>
             <div class="custom-modal-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+                    <path
+                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z">
+                    </path>
                 </svg>
             </div>
             <h3>Coming <span class="text-gradient">Soon</span></h3>
-            <p>Our custom package calculator is currently being crafted. Stay tuned for an interactive and completely personalized quoting experience!</p>
+            <p>Our custom package calculator is currently being crafted. Stay tuned for an interactive and completely
+                personalized quoting experience!</p>
             <button class="btn btn-primary" onclick="closeComingSoonModal()" style="margin-top: 1rem;">Got It</button>
         </div>
     </div>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="image_catalog.js"></script><script src="script.js"></script>
+    <script src="image_catalog.js"></script>
+    <script src="script.js"></script>
     <script>
         function openComingSoonModal() {
             document.getElementById('coming-soon-modal').classList.add('active');
@@ -804,10 +849,11 @@
             document.body.classList.remove('no-scroll');
         }
         // Close on clicking outside
-        document.getElementById('coming-soon-modal').addEventListener('click', function(e) {
-            if(e.target === this) closeComingSoonModal();
+        document.getElementById('coming-soon-modal').addEventListener('click', function (e) {
+            if (e.target === this) closeComingSoonModal();
         });
     </script>
     <script src="whatsapp-widget.js"></script>
 </body>
+
 </html>
