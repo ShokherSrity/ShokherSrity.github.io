@@ -206,10 +206,10 @@ p {
    --nav-blur      : backdrop blur + saturation
    ──────────────────────────────────────────────────────────────────────── */
 :root {
-    --nav-bg: rgba(14, 11, 8, 0.41);
-    --nav-bg-scrolled: rgba(14, 11, 8, 0.50);
-    --nav-blur: blur(48px) saturate(200%);
-    --nav-border: rgba(212, 175, 55, 0.12);
+    --nav-bg: rgba(14, 11, 8, 0.55);
+    --nav-bg-scrolled: rgba(10, 8, 5, 0.82);
+    --nav-blur: blur(28px) saturate(190%);
+    --nav-border: rgba(212, 175, 55, 0.18);
 }
 
 header {
@@ -230,13 +230,15 @@ header {
 }
 
 header.scrolled {
-    background: var(--nav-bg-scrolled);
-    border-bottom-color: rgba(212, 175, 55, 0.18);
+    background:
+        linear-gradient(180deg, rgba(212, 175, 55, 0.06) 0%, rgba(212, 175, 55, 0) 60%),
+        var(--nav-bg-scrolled);
+    border-bottom-color: rgba(212, 175, 55, 0.28);
     box-shadow:
-        0 1px 0 rgba(255, 215, 0, 0.05),
-        0 8px 48px rgba(0, 0, 0, 0.38),
-        0 0 60px rgba(212, 175, 55, 0.04),
-        inset 0 -1px 0 rgba(212, 175, 55, 0.08);
+        0 1px 0 rgba(255, 215, 0, 0.06),
+        0 10px 48px rgba(0, 0, 0, 0.55),
+        0 0 60px rgba(212, 175, 55, 0.05),
+        inset 0 -1px 0 rgba(212, 175, 55, 0.14);
 }
 
 /* ── Nav Top Backdrop ─────────────────────────────────────────────────────────
@@ -1195,7 +1197,7 @@ section {
 
 .gallery-page {
     background: var(--color-cream);
-    padding-top: 80px;
+    padding-top: 0;
 }
 
 .gallery-header {
@@ -1385,7 +1387,7 @@ section {
 
 .packages-page {
     background: var(--color-cream);
-    padding-top: 80px;
+    padding-top: 0;
     position: relative;
     overflow: hidden;
 }
@@ -2159,7 +2161,7 @@ section {
 
 .contact-page {
     background: var(--color-cream);
-    padding-top: 80px;
+    padding-top: 0;
 }
 
 .contact-header {
@@ -2816,7 +2818,7 @@ section {
     .gallery-page,
     .packages-page,
     .contact-page {
-        padding-top: 72px;
+        padding-top: 0;
     }
 
     .gallery-header,
@@ -2847,20 +2849,25 @@ section {
         max-width: 340px;
         height: 100vh;
         height: 100dvh;
-        /* ── Exact same frosted glass surface as the header bar ── */
-        background: var(--nav-bg-scrolled);
-        backdrop-filter: var(--nav-blur);
-        -webkit-backdrop-filter: var(--nav-blur);
+        /* ── Stronger frosted glass for mobile drawer ── */
+        background:
+            linear-gradient(165deg,
+                rgba(212, 175, 55, 0.10) 0%,
+                rgba(14, 11, 8, 0.55) 35%,
+                rgba(10, 8, 5, 0.78) 100%),
+            rgba(10, 8, 5, 0.55);
+        backdrop-filter: blur(32px) saturate(200%);
+        -webkit-backdrop-filter: blur(32px) saturate(200%);
         flex-direction: column;
         justify-content: center;
         gap: 2.25rem;
         transition: right 0.4s cubic-bezier(.22, 1, .36, 1);
         z-index: var(--z-fixed);
-        border-left: 1px solid var(--nav-border);
+        border-left: 1px solid rgba(212, 175, 55, 0.28);
         box-shadow:
-            -10px 0 60px rgba(0, 0, 0, 0.40),
-            inset 1px 0 0 rgba(255, 255, 255, 0.03),
-            inset 0 0 80px rgba(212, 175, 55, 0.02);
+            -16px 0 60px rgba(0, 0, 0, 0.55),
+            inset 1px 0 0 rgba(255, 215, 0, 0.10),
+            inset 0 0 120px rgba(212, 175, 55, 0.05);
         padding: 2rem;
         overflow: hidden;
         /* Chrome backdrop-filter fix */
@@ -2868,18 +2875,47 @@ section {
         transform: translateZ(0);
     }
 
-    /* Frosted glass warm gradient overlay */
+    /* Frosted glass warm gradient + prism shimmer overlay */
     .nav-links::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(165deg,
-                rgba(212, 175, 55, 0.04) 0%,
-                rgba(255, 255, 255, 0.015) 30%,
+        background:
+            radial-gradient(ellipse at 0% 0%, rgba(255, 215, 0, 0.10) 0%, transparent 55%),
+            radial-gradient(ellipse at 100% 100%, rgba(212, 175, 55, 0.08) 0%, transparent 55%),
+            linear-gradient(165deg,
+                rgba(212, 175, 55, 0.06) 0%,
+                rgba(255, 255, 255, 0.02) 30%,
                 transparent 60%,
-                rgba(0, 0, 0, 0.15) 100%);
+                rgba(0, 0, 0, 0.20) 100%);
         pointer-events: none;
         z-index: 0;
+    }
+
+    /* Prism refraction sweep on the drawer edge */
+    .nav-links::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(115deg,
+                transparent 0%,
+                rgba(255, 215, 0, 0.07) 35%,
+                rgba(212, 175, 55, 0.12) 50%,
+                rgba(255, 215, 0, 0.07) 65%,
+                transparent 100%);
+        transform: skewX(-18deg);
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 0.4s ease, left 1.4s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .nav-links.active::after {
+        opacity: 1;
+        left: 100%;
     }
 
     /* Ensure links sit above the ::before overlay */
@@ -3003,7 +3039,7 @@ section {
     .gallery-page,
     .packages-page,
     .contact-page {
-        padding-top: 64px;
+        padding-top: 0;
     }
 
     .gallery-header,
