@@ -90,7 +90,7 @@
                     <h3 class="contact-card-title">Email Us</h3>
                     <div class="contact-card-info">
                         <p><a href="mailto:shokhersrity@gmail.com">shokhersrity@gmail.com</a></p>
-                        <p style="font-size: 0.9rem; color: #888; margin-top: 0.5rem;">We reply within 24 hours</p>
+                        <p class="contact-card-hint">We reply within 24 hours</p>
                     </div>
                 </div>
 
@@ -107,8 +107,7 @@
                         <!-- ========== OFFICE LOCATION - EDIT HERE ========== -->
                         <p>Bhanga, Faridpur, Bangladesh</p>
                         <!-- ========== END OFFICE LOCATION ========== -->
-                        <p style="font-size: 0.9rem; color: #888; margin-top: 0.5rem;">Available for travel nationwide
-                        </p>
+                        <p class="contact-card-hint">Available for travel nationwide</p>
                     </div>
                 </div>
             </div>
@@ -119,13 +118,10 @@
             <!-- Google Maps embed link. You can get one from Google Maps > -->
             <!-- Share > Embed a map, then paste the src URL here. -->
             <!-- ================================================================== -->
-            <div class="map-embed-container" data-aos="fade-up"
-                style="max-width: 1000px; margin: 0 auto 2rem; padding: 0 2rem;">
-                <div
-                    style="background: var(--color-white); border-radius: 24px; padding: 2rem; box-shadow: 0 10px 40px rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.12); overflow: hidden;">
-                    <h3 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.5rem;">Our <span
-                            class="text-gradient">Location</span></h3>
-                    <div style="border-radius: 16px; overflow: hidden; height: 350px;">
+            <div class="map-card" data-aos="fade-up">
+                <div class="map-card-inner">
+                    <h3 class="map-card-title">Our <span class="text-gradient">Location</span></h3>
+                    <div class="map-frame">
                         <!-- ========== MAP IFRAME ========== -->
                         <iframe
                             src="https://maps.google.com/maps?q=Shokher+Srity,+Bhanga,+Faridpur&t=&z=16&ie=UTF8&iwloc=&output=embed"
@@ -134,9 +130,9 @@
                         </iframe>
                         <!-- ========== END MAP IFRAME ========== -->
                     </div>
-                    <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #888;">
+                    <p class="map-card-address">
                         <!-- ========== MAP ADDRESS TEXT - EDIT HERE ========== -->
-                        📍 Bhanga, Faridpur, Bangladesh
+                        <span aria-hidden="true">📍</span> Bhanga, Faridpur, Bangladesh
                         <!-- ========== END MAP ADDRESS TEXT ========== -->
                     </p>
                 </div>
@@ -146,15 +142,14 @@
             <!-- Business Hours -->
             <div class="business-hours" data-aos="fade-up">
                 <div class="business-hours-header">
-                    <div
-                        style="width: 60px; height: 60px; background: rgba(212,175,55,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                    <div class="business-hours-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2">
                             <circle cx="12" cy="12" r="10"></circle>
                             <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
                     </div>
                     <h3>Business Hours</h3>
-                    <p style="color: #666;">We are available to capture your special moments</p>
+                    <p class="business-hours-sub">We are available to capture your special moments</p>
                 </div>
                 <div class="hours-grid">
                     <div class="hour-item">
@@ -169,10 +164,79 @@
                         <div class="hour-day">Sunday</div>
                         <div class="hour-time">By Appointment</div>
                     </div>
-                    <div class="hour-item">
+                    <div class="hour-item featured">
+                        <span class="hour-badge">Always</span>
                         <div class="hour-day">Wedding Days</div>
                         <div class="hour-time">24/7 Coverage</div>
                     </div>
+                </div>
+            </div>
+
+            <!-- FAQ Accordion (CSS-only, fully static) -->
+            <div class="faq-section" id="faq" data-aos="fade-up">
+                <div class="faq-header">
+                    <span class="section-label" style="color: var(--color-gold);">Common Questions</span>
+                    <h3>Frequently Asked <span class="text-gradient">Questions</span></h3>
+                    <p class="faq-sub">Everything you might want to know before reaching out</p>
+                </div>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>
+                            <span class="faq-q">Do you travel outside Bhanga or Faridpur for weddings?</span>
+                            <span class="faq-toggle" aria-hidden="true"></span>
+                        </summary>
+                        <div class="faq-a">
+                            <p>Yes, we cover weddings nationwide across Bangladesh. Travel costs for venues outside the
+                                Faridpur district are added on top of the package price. Just share your venue when you
+                                message us and we will give you the full breakdown.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>
+                            <span class="faq-q">How early should I book my wedding date?</span>
+                            <span class="faq-toggle" aria-hidden="true"></span>
+                        </summary>
+                        <div class="faq-a">
+                            <p>We recommend booking at least 2 to 3 months in advance, especially for the November to
+                                February wedding season. Popular dates fill up quickly. Once your date is confirmed
+                                with an advance, it is locked exclusively for you.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>
+                            <span class="faq-q">What is included in a typical wedding package?</span>
+                            <span class="faq-toggle" aria-hidden="true"></span>
+                        </summary>
+                        <div class="faq-a">
+                            <p>Every package includes professional photographers, edited high-resolution images, an
+                                online gallery, and a curated highlight set. Cinematography, drone coverage, same-day
+                                reels, and printed albums vary by tier — check the
+                                <a href="packages.html">Packages page</a> for a full comparison.
+                            </p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>
+                            <span class="faq-q">When will I receive my photos and videos?</span>
+                            <span class="faq-toggle" aria-hidden="true"></span>
+                        </summary>
+                        <div class="faq-a">
+                            <p>Edited photos are delivered within 3 to 4 weeks. Highlight reels and short edits are
+                                shared within 7 to 10 days. The full cinematic film, where included, is delivered
+                                within 6 to 8 weeks of the event.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>
+                            <span class="faq-q">How do I confirm a booking?</span>
+                            <span class="faq-toggle" aria-hidden="true"></span>
+                        </summary>
+                        <div class="faq-a">
+                            <p>Reach out by phone, email, or WhatsApp with your wedding date, venue, and the package
+                                you are interested in. Once we confirm availability, a small advance secures the date
+                                and we share a written agreement covering everything you can expect.</p>
+                        </div>
+                    </details>
                 </div>
             </div>
 
@@ -237,34 +301,24 @@
                 </div>
             </div>
 
-            <!-- Social Proof / Testimonials -->
-            <div style="background: var(--color-white); border-radius: 24px; padding: 3rem; margin-top: 3rem;"
-                data-aos="fade-up">
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.5rem;">Trusted by Couples</h3>
-                    <p style="color: #666;">Join the 200+ couples who chose ShokherSrity</p>
+            <!-- Social Proof / Stats -->
+            <div class="contact-stats" data-aos="fade-up">
+                <div class="contact-stats-header">
+                    <h3>Trusted by Couples</h3>
+                    <p>Join the 200+ couples who chose ShokherSrity</p>
                 </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                    <div
-                        style="text-align: center; padding: 1.5rem; background: var(--color-cream); border-radius: 16px;">
-                        <div
-                            style="font-size: 2.5rem; font-weight: 800; color: var(--color-gold); margin-bottom: 0.5rem;">
-                            100%</div>
-                        <p style="color: #666; font-size: 0.9rem;">Client Satisfaction</p>
+                <div class="contact-stats-grid">
+                    <div class="contact-stat">
+                        <div class="contact-stat-num">100%</div>
+                        <p class="contact-stat-label">Client Satisfaction</p>
                     </div>
-                    <div
-                        style="text-align: center; padding: 1.5rem; background: var(--color-cream); border-radius: 16px;">
-                        <div
-                            style="font-size: 2.5rem; font-weight: 800; color: var(--color-gold); margin-bottom: 0.5rem;">
-                            5+</div>
-                        <p style="color: #666; font-size: 0.9rem;">Years Experience</p>
+                    <div class="contact-stat">
+                        <div class="contact-stat-num">5+</div>
+                        <p class="contact-stat-label">Years Experience</p>
                     </div>
-                    <div
-                        style="text-align: center; padding: 1.5rem; background: var(--color-cream); border-radius: 16px;">
-                        <div
-                            style="font-size: 2.5rem; font-weight: 800; color: var(--color-gold); margin-bottom: 0.5rem;">
-                            200+</div>
-                        <p style="color: #666; font-size: 0.9rem;">Weddings Captured</p>
+                    <div class="contact-stat">
+                        <div class="contact-stat-num">200+</div>
+                        <p class="contact-stat-label">Weddings Captured</p>
                     </div>
                 </div>
             </div>
