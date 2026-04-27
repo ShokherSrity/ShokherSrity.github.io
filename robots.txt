@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block raw asset directory listings if any tooling exposes them
+Disallow: /.git/
+Disallow: /.local/
+
+Sitemap: https://shokhersrity.github.io/sitemap.xml
