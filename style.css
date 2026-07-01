@@ -206,10 +206,10 @@ p {
    --nav-blur      : backdrop blur + saturation
    ──────────────────────────────────────────────────────────────────────── */
 :root {
-    --nav-bg: rgba(15, 15, 20, 0.65);
-    --nav-bg-scrolled: rgba(15, 15, 20, 0.82);
-    --nav-blur: blur(12px) saturate(180%);
-    --nav-border: rgba(255, 255, 255, 0.10);
+    --nav-bg: rgba(10, 10, 12, 0.75);
+    --nav-bg-scrolled: rgba(10, 10, 12, 0.88);
+    --nav-blur: blur(24px) saturate(190%);
+    --nav-border: rgba(212, 175, 55, 0.15);
 }
 
 header {
@@ -224,20 +224,20 @@ header {
     transition: background 0.4s cubic-bezier(.22, 1, .36, 1), box-shadow 0.4s cubic-bezier(.22, 1, .36, 1), border-color 0.4s ease;
     border-bottom: 1px solid var(--nav-border);
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.10),
-        inset 0 -1px 0 rgba(212, 175, 55, 0.06);
+        0 8px 32px rgba(0, 0, 0, 0.15),
+        inset 0 -1px 0 rgba(212, 175, 55, 0.08);
 }
 
 header.scrolled {
     background:
-        linear-gradient(180deg, rgba(212, 175, 55, 0.06) 0%, rgba(212, 175, 55, 0) 60%),
+        linear-gradient(180deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0) 60%),
         var(--nav-bg-scrolled);
-    border-bottom-color: rgba(212, 175, 55, 0.28);
+    border-bottom-color: rgba(212, 175, 55, 0.35);
     box-shadow:
-        0 1px 0 rgba(255, 215, 0, 0.06),
-        0 10px 48px rgba(0, 0, 0, 0.55),
-        0 0 60px rgba(212, 175, 55, 0.05),
-        inset 0 -1px 0 rgba(212, 175, 55, 0.14);
+        0 1px 0 rgba(255, 215, 0, 0.08),
+        0 10px 48px rgba(0, 0, 0, 0.60),
+        0 0 60px rgba(212, 175, 55, 0.08),
+        inset 0 -1px 0 rgba(212, 175, 55, 0.18);
 }
 
 /* ── Nav Top Backdrop ─────────────────────────────────────────────────────────
@@ -253,9 +253,9 @@ header.scrolled {
     height: 72px;
     /* matches the navbar height */
     background: linear-gradient(180deg,
-            rgba(10, 8, 5, 0.96) 0%,
-            rgba(12, 9, 6, 0.90) 60%,
-            rgba(14, 10, 7, 0.70) 100%);
+            rgba(10, 8, 5, 0.98) 0%,
+            rgba(12, 9, 6, 0.94) 60%,
+            rgba(14, 10, 7, 0.75) 100%);
     pointer-events: none;
     flex-shrink: 0;
 }
@@ -290,15 +290,18 @@ nav {
 
 .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 2.2rem;
     align-items: center;
 }
 
 .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     font-family: var(--font-body);
     font-size: 0.78rem;
     font-weight: 500;
-    letter-spacing: 2.5px;
+    letter-spacing: 2.2px;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.78);
     position: relative;
@@ -306,10 +309,106 @@ nav {
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    stroke: rgba(255, 255, 255, 0.78);
+    transition: stroke 0.3s ease, transform 0.3s ease, fill 0.3s ease;
+    display: inline-block;
+    vertical-align: middle;
+}
 
-.nav-links a:hover {
-    color: var(--color-gold-light);
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--color-gold-light) !important;
+}
+
+.nav-links a:hover .nav-icon,
+.nav-links a.active .nav-icon {
+    stroke: var(--color-gold-light) !important;
+}
+
+/* Custom glowing active/hover dot */
+.nav-links a::after {
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    bottom: -4px !important;
+    left: 50% !important;
+    transform: translateX(-50%) scale(0) !important;
+    width: 4px !important;
+    height: 4px !important;
+    background: var(--color-gold) !important;
+    border-radius: 50% !important;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 0 8px var(--color-gold), 0 0 16px var(--color-gold) !important;
+    opacity: 0.9 !important;
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after {
+    transform: translateX(-50%) scale(1) !important;
+}
+
+/* ── Menu Icon Hover Micro-animations ────────────────────────────────────── */
+
+/* Home Icon Animation */
+.nav-links a .roof,
+.nav-links a .door {
+    transition: transform 0.3s ease, stroke 0.3s ease;
+}
+.nav-links a:hover .roof {
+    transform: translateY(-2px);
+}
+.nav-links a:hover .door {
     transform: translateY(-1px);
+    stroke: var(--color-gold-bright);
+}
+
+/* Gallery Icon Animation (Rotate lens) */
+.nav-links a .lens {
+    transform-origin: 12px 13px;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-links a:hover .lens {
+    transform: rotate(360deg) scale(1.1);
+}
+
+/* Reels Icon Animation (Pulse play symbol) */
+.nav-links a .play-btn {
+    transform-origin: 12px 12px;
+    transition: transform 0.3s ease, fill 0.3s ease;
+}
+.nav-links a:hover .play-btn {
+    transform: scale(1.2) translateX(0.5px);
+    fill: rgba(255, 215, 0, 0.15);
+}
+
+/* Packages Icon Animation (Lift gift lid) */
+.nav-links a .gift-lid {
+    transform-origin: 12px 7px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.nav-links a:hover .gift-lid {
+    transform: translateY(-3px) rotate(5deg);
+}
+
+/* Contact Icon Animation (Bounce envelope & open fold) */
+.nav-links a .envelope-fold {
+    transform-origin: 12px 6px;
+    transition: transform 0.3s ease;
+}
+.nav-links a:hover .envelope-fold {
+    transform: translateY(-1px) scaleY(0.9);
+}
+.nav-links a:hover .envelope-body {
+    animation: envelopeShake 0.4s ease;
+}
+
+@keyframes envelopeShake {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
 }
 
 /* Mobile Menu Button */
@@ -3108,38 +3207,40 @@ section {
     transform: translateY(0);
 }
 
-/* Stagger children */
-.stagger-children>* {
-    opacity: 0;
-    transform: translateY(20px);
-}
+/* Stagger children (Desktop only to prevent mobile pop-up layout delay) */
+@media (min-width: 769px) {
+    .stagger-children>* {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-.stagger-children.active>* {
-    animation: fadeInUp 0.6s ease forwards;
-}
+    .stagger-children.active>* {
+        animation: fadeInUp 0.6s ease forwards;
+    }
 
-.stagger-children.active>*:nth-child(1) {
-    animation-delay: 0.1s;
-}
+    .stagger-children.active>*:nth-child(1) {
+        animation-delay: 0.1s;
+    }
 
-.stagger-children.active>*:nth-child(2) {
-    animation-delay: 0.2s;
-}
+    .stagger-children.active>*:nth-child(2) {
+        animation-delay: 0.2s;
+    }
 
-.stagger-children.active>*:nth-child(3) {
-    animation-delay: 0.3s;
-}
+    .stagger-children.active>*:nth-child(3) {
+        animation-delay: 0.3s;
+    }
 
-.stagger-children.active>*:nth-child(4) {
-    animation-delay: 0.4s;
-}
+    .stagger-children.active>*:nth-child(4) {
+        animation-delay: 0.4s;
+    }
 
-.stagger-children.active>*:nth-child(5) {
-    animation-delay: 0.5s;
-}
+    .stagger-children.active>*:nth-child(5) {
+        animation-delay: 0.5s;
+    }
 
-.stagger-children.active>*:nth-child(n+6) {
-    animation-delay: 0.6s;
+    .stagger-children.active>*:nth-child(n+6) {
+        animation-delay: 0.6s;
+    }
 }
 
 /* ============================================
@@ -4246,4 +4347,67 @@ img.loaded {
 .footer-social a:hover svg {
     stroke: #000 !important;
     fill: none !important;
+}
+
+/* ── ADDITIONAL PREMIUM UI UPGRADES & MICRO-ANIMATIONS ────────────────────── */
+
+/* Glass Prism Shimmer Sweep on Gallery & Featured Cards */
+.featured-item::before,
+.masonry-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.18), rgba(255, 255, 255, 0.1), transparent);
+    transform: skewX(-25deg);
+    transition: 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.featured-item:hover::before,
+.masonry-item:hover::before {
+    left: 150%;
+}
+
+/* Button Icon Slide Hover Micro-animation */
+.btn svg,
+.btn-primary svg,
+.btn-secondary svg,
+.btn-outline svg {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn:hover svg,
+.btn-primary:hover svg,
+.btn-secondary:hover svg,
+.btn-outline:hover svg {
+    transform: scale(1.15) translateX(3px);
+}
+
+/* Premium Card Hover Glow Transitions */
+.testimonial-card,
+.package-card,
+.contact-card,
+.inquiry-card {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.3s ease, background-color 0.3s ease !important;
+}
+
+/* Mobile Nav Drawer Enhancements */
+@media (max-width: 768px) {
+    .nav-links {
+        transform: translateX(20px);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    .nav-links.active {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        right: 0;
+    }
 }

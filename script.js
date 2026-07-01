@@ -312,6 +312,52 @@ function initSmoothScroll() {
     });
 }
 
+// ============================================
+// ACTIVE NAV LINK SELECTION
+// ============================================
+function initActiveNavLink() {
+    let currentPath = window.location.pathname;
+    let pageName = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+    pageName = pageName.split('?')[0].split('#')[0]; // Strip queries and hashes
+    
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        const isHome = href === 'index.html';
+        const isCurrentHome = pageName === '' || pageName === 'index.html';
+        
+        if ((isHome && isCurrentHome) || (href === pageName && pageName !== '')) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
+// ============================================
+// MOBILE SCROLL ANIMATION ADAPTER
+// ============================================
+function adjustMobileScrollAnimations() {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        // Remove stagger-children on testimonials grid and add reveal to cards
+        const testimonialsGrid = document.querySelector('.testimonials-grid');
+        if (testimonialsGrid) {
+            testimonialsGrid.classList.remove('stagger-children');
+            const cards = testimonialsGrid.querySelectorAll('.testimonial-card');
+            cards.forEach(card => card.classList.add('reveal'));
+        }
+        
+        // Remove stagger-children from homepage featured grid and add reveal to items
+        const featuredGrid = document.getElementById('homepage-featured-grid');
+        if (featuredGrid) {
+            featuredGrid.classList.remove('stagger-children');
+            const items = featuredGrid.querySelectorAll('.featured-item');
+            items.forEach(item => item.classList.add('reveal'));
+        }
+    }
+}
+
 
 // ============================================
 // ZERO-CLS GALLERY BUILDER (JSON fetched)
@@ -590,18 +636,23 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderScroll();
     initMobileMenu();
     initSmoothScroll();
+    initActiveNavLink();
+    initResponsiveHero();
 
+    // Build dynamic content first
+    buildGalleryGrid();
+    buildHomepageFeatured();
+
+    // Adapt animations on mobile before registering scroll reveal observers
+    adjustMobileScrollAnimations();
+
+    // Run animations and scroll reveals
     initScrollReveal();
     initStaggerAnimation();
     initStatsCounter();
     initParallax();
-    initResponsiveHero();
 
-    // Build dynamic content
-    buildGalleryGrid();
-    buildHomepageFeatured();
-
-    // Gallery
+    // Gallery & Interactive Widgets
     initGalleryFilter();
     initLightbox();
     initAOS();
